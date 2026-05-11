@@ -1,0 +1,44 @@
+name: Update incident data
+
+on:
+  schedule:
+    # Daily at 06:00 UTC
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Set up Python 3.13
+        run: uv python install 3.13
+
+      - name: Sync dependencies
+        run: uv sync --python 3.13
+
+      - name: Run extractor
+        run: |
+          uv run python pipeline/extract_incidents.py \
+            --out parsed \
+            --enrich-impact \
+            --infer-components gliner2
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain parsed/)" ]]; then
+            git add parsed/
+            git commit -m "chore(data): daily refresh"
+            git push
+          else
+            echo "No data changes."
+          fi

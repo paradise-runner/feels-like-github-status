@@ -1,0 +1,4 @@
+{"id":"100","title":"Incident with Actions","impact":"major","components":["Actions","Pull Requests"]}
+{"id":"101","title":"Incident with Codespaces","impact":"minor","components":["Codespaces"]}
+{"id":"102","title":"Routine maintenance","impact":"maintenance","components":["Pages"]}
+{"id":"103","title":"No-impact note","impact":"none","components":["API Requests"]}

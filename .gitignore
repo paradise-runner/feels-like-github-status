@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+.cache/
+.pytest_cache/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# Pipeline cache
+pipeline/.cache/

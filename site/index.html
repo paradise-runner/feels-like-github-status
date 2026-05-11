@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Feels-like GitHub Status</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#0d1117" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Feels-like GitHub Status</h1>
+    <p class="lede">GitHub uptime, filtered to the hours you actually use it.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Services you depend on</h3>
+        <p class="muted panel-sub">The headline percentage only counts incidents that touch one of your selected services.</p>
+      </div>
+      <div id="servicesFilter"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Your hours</h3>
+        <div class="presets">
+          <button type="button" data-preset="work-hours">Work hours</button>
+          <button type="button" data-preset="evenings-weekends">Evenings &amp; weekends</button>
+          <button type="button" data-preset="always">Always</button>
+          <button type="button" data-preset="clear">Clear</button>
+        </div>
+        <div class="tz">
+          <label for="tzSelect">Timezone</label>
+          <select id="tzSelect"></select>
+        </div>
+      </div>
+      <div id="timeGrid"></div>
+    </section>
+
+    <section class="panel" id="uptimeCard"></section>
+
+    <section class="panel" id="serviceList"></section>
+
+    <section class="panel about">
+      <h3>About</h3>
+      <p>
+        This is a remix of <a href="https://github.com/mrshu/github-statuses">mrshu/github-statuses</a> (MIT). Instead of computing one platform-wide uptime number across every minute of the last 90 days, it filters to the hours you marked above.
+      </p>
+      <p class="muted">
+        Source on <a href="https://github.com/edwardchampion/feels-like-github-status">GitHub</a>.
+      </p>
+    </section>
+  </main>
+
+  <div id="errorBanner" class="error-banner" hidden>
+    Couldn't load incident data. <button type="button" id="retryButton">Retry</button>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

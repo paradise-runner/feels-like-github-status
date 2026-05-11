@@ -1,0 +1,5 @@
+incident_id,downtime_start,downtime_end,duration_minutes,source,title,impact
+100,2026-04-01T10:00:00Z,2026-04-01T10:30:00Z,30,updates,Incident with Actions,major
+101,2026-04-02T15:00:00Z,2026-04-02T15:15:00Z,15,updates,Incident with Codespaces,minor
+102,2026-04-03T08:00:00Z,2026-04-03T09:00:00Z,60,updates,Routine maintenance,maintenance
+103,2026-04-04T08:00:00Z,2026-04-04T08:01:00Z,1,updates,No-impact note,none
