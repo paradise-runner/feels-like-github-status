@@ -34,8 +34,6 @@ uv run python pipeline/extract_incidents.py --out parsed --enrich-impact --infer
 - `site/` — static site (HTML, CSS, vanilla ES modules)
 - `pipeline/` — vendored Python data pipeline (MIT, see `pipeline/LICENSE`)
 - `parsed/` — generated incident data committed by CI
-- `docs/superpowers/specs/` — design spec
-- `docs/superpowers/plans/` — implementation plan
 
 ## License
 
