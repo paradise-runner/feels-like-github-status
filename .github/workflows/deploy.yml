@@ -17,6 +17,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Copy incident data into site
+        run: cp -R parsed/ site/parsed/
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site/
