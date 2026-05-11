@@ -366,7 +366,61 @@ main {
 .sl-tip-dot.sev-major       { background: var(--sev-major); }
 
 .muted { color: var(--muted); }
-.about p { margin: 8px 0; }
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  padding: 32px 16px 48px;
+}
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.footer-desc {
+  flex: 1 1 300px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.footer-desc a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.footer-desc a:hover {
+  text-decoration: underline;
+}
+.footer-links {
+  display: flex;
+  gap: 18px;
+}
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.footer-link:hover {
+  color: var(--text);
+}
+.footer-link svg {
+  flex-shrink: 0;
+}
+.footer-copy {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+}
 
 /* Services filter */
 .services-filter .sf-row {
