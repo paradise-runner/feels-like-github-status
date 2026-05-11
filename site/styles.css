@@ -203,18 +203,24 @@ main {
 }
 .uc-pct::after { content: " uptime"; font-size: 14px; font-weight: 500; color: var(--muted); }
 .uc-bars {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(90, minmax(0, 1fr));
   gap: 3px;
-  height: 36px;
-  align-items: stretch;
   margin: 4px 0 8px;
 }
 .uc-bar {
-  flex: 1;
-  min-width: 3px;
-  height: 100%;
+  height: 34px;
   background: var(--sev-operational);
   border-radius: 999px;
+}
+@media (max-width: 560px) {
+  .uc-bars {
+    grid-template-columns: repeat(45, minmax(0, 1fr));
+    gap: 2px;
+  }
+  .uc-bar {
+    height: 17px;
+  }
 }
 .uc-bar.sev-operational { background: var(--sev-operational); opacity: 0.85; }
 .uc-bar.sev-maintenance { background: var(--sev-maintenance); }
