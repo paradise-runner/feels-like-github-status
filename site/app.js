@@ -10,7 +10,14 @@ import { ServiceList } from "./components/service-list.js";
 import { ServicesFilter } from "./components/services-filter.js";
 
 const STORAGE_KEY = "feels-like-state-v1";
-const PARSED_BASE = new URL("../parsed", import.meta.url).href;
+// During local dev (served from repo root), the page path includes "/site/"
+// and data lives at ../parsed (one level up from site/).
+// On GitHub Pages, data is bundled inside site/parsed/ during deployment,
+// so it's at ./parsed relative to the page URL.
+const PATHNAME = location.pathname;
+const PARSED_BASE = PATHNAME.includes("/site/")
+  ? new URL("../parsed", location.href).href
+  : new URL("parsed", location.href).href;
 
 const COMMON_TIMEZONES = [
   "UTC",
