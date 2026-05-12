@@ -83,6 +83,10 @@ main {
   flex-direction: column;
   gap: 20px;
 }
+@media (max-width: 560px) {
+  main { padding: 0 12px 40px; gap: 14px; }
+  .panel { padding: 16px 12px; }
+}
 .panel {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -121,7 +125,10 @@ main {
 .time-grid { user-select: none; padding: 4px 0 2px; }
 .tg-row { display: flex; align-items: center; gap: 3px; }
 .tg-row + .tg-row { margin-top: 3px; }
-.tg-row.tg-head { margin-bottom: 4px; }
+.tg-row.tg-head {
+  margin-bottom: 4px;
+  overflow: hidden;
+}
 
 .tg-spacer,
 .tg-day-label {
@@ -175,6 +182,38 @@ main {
 .tg-hour-label[data-hour="12"],
 .tg-hour-label[data-hour="18"] {
   margin-left: 9px;
+}
+
+@media (max-width: 560px) {
+  .time-grid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    position: relative;
+  }
+  .tg-spacer,
+  .tg-day-label {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--panel);
+    width: 36px;
+    flex-basis: 36px;
+    padding-right: 6px;
+    font-size: 11px;
+  }
+  .tg-cell {
+    height: 22px;
+    border-radius: 4px;
+  }
+  .tg-hour-label {
+    display: none;
+  }
+  .tg-cell[data-hour="6"],
+  .tg-cell[data-hour="12"],
+  .tg-cell[data-hour="18"] {
+    margin-left: 5px;
+  }
 }
 /* Row 1 is the hour-header row; day rows are :nth-of-type(2..8). */
 .tg-row:nth-of-type(2) .tg-cell.is-on { background: var(--day-red); }
