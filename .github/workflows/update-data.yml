@@ -24,19 +24,34 @@ jobs:
       - name: Sync dependencies
         run: uv sync --python 3.13
 
-      - name: Run extractor
+      - name: Fetch latest incident history from githubstatus.com
         run: |
+          curl -sS -o pipeline/github-status-history.atom \
+            "https://www.githubstatus.com/history.atom"
+
+      - name: Run extractor on fresh feed
+        run: |
+          mkdir -p /tmp/fresh
           uv run python pipeline/extract_incidents.py \
-            --out parsed \
+            --path pipeline/github-status-history.atom \
+            --out /tmp/fresh \
             --enrich-impact \
-            --infer-components gliner2
+            --no-segments \
+            --no-windows
+
+      - name: Merge incoming data with existing historical data
+        run: |
+          uv run python pipeline/merge_incidents.py \
+            --existing parsed/incidents.jsonl \
+            --incoming /tmp/fresh/incidents.jsonl \
+            --out parsed
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain parsed/)" ]]; then
-            git add parsed/
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add pipeline/github-status-history.atom parsed/
             git commit -m "chore(data): daily refresh"
             git push
           else
