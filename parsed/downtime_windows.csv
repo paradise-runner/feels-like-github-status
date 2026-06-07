@@ -753,3 +753,4 @@ incident_id,downtime_start,downtime_end,duration_minutes,source,title,impact
 30441946,2026-06-03T19:42:00Z,2026-06-04T04:11:00Z,509,updates,Disruption with some GitHub services,minor
 30452936,2026-06-04T18:02:00Z,2026-06-04T19:59:00Z,117,updates,Copilot Code Review Failing,critical
 30453760,2026-06-04T20:20:00Z,2026-06-04T20:32:00Z,12,updates,Live updates degraded,critical
+30463506,2026-06-05T17:20:00Z,2026-06-05T22:21:00Z,301,updates,"Auth issue resulting in API impacts, including some Slack and Teams channel subscriptions",minor
