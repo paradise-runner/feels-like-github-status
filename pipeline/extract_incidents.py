@@ -412,6 +412,9 @@ def enrich_impacts(incidents, cache_path, delay_seconds):
         components = extract_components_from_html(html_text)
         if impact:
             incident["impact"] = impact
+        else:
+            # Align with mrshu/github-statuses: default to "none" if impact not found
+            incident["impact"] = "none"
         if components:
             incident["components"] = components
         cache[url] = {
