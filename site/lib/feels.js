@@ -97,7 +97,8 @@ export function feels({ windows, mask, tz, now, acceptedServices = null }) {
     // Clamp to whole minute boundaries.
     const startMin = Math.floor(startMs / MS_PER_MIN) * MS_PER_MIN;
     const endMin = Math.ceil(endMs / MS_PER_MIN) * MS_PER_MIN;
-    const sevRank = SEVERITY_RANK[w.impact] ?? 0;
+    const sevRank = SEVERITY_RANK[w.impact] ?? SEVERITY_RANK["minor"];
+    const normalizedImpact = w.impact && SEVERITY_RANK[w.impact] !== undefined ? w.impact : "minor";
     // A window counts toward the platform metric only if at least one of its
     // components is in the user's accepted services. null = no filter.
     const platformQualifies =
@@ -120,7 +121,7 @@ export function feels({ windows, mask, tz, now, acceptedServices = null }) {
           downtimeMinutes += 1;
         }
         // Severity escalation applies on every qualifying hit, deduped or not.
-        if (sevRank > SEVERITY_RANK[dayEntry.severity]) dayEntry.severity = w.impact;
+        if (sevRank > SEVERITY_RANK[dayEntry.severity]) dayEntry.severity = normalizedImpact;
       }
 
       for (const svc of w.components) {
@@ -132,11 +133,11 @@ export function feels({ windows, mask, tz, now, acceptedServices = null }) {
           acc.downtimeMinutes += 1;
           const sd = acc.perDay[dayIdx];
           sd.down += 1;
-          if (sevRank > SEVERITY_RANK[sd.severity]) sd.severity = w.impact;
+          if (sevRank > SEVERITY_RANK[sd.severity]) sd.severity = normalizedImpact;
         } else {
           // Already counted this minute for this service — still update severity.
           const sd = acc.perDay[dayIdx];
-          if (sevRank > SEVERITY_RANK[sd.severity]) sd.severity = w.impact;
+          if (sevRank > SEVERITY_RANK[sd.severity]) sd.severity = normalizedImpact;
         }
       }
     }
