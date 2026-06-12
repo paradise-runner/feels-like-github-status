@@ -1,7 +1,7 @@
 import { expand, minutesPerDayOfWeek } from "./mask.js";
 import { localPartsInZone } from "./tz.js";
 
-const SEVERITY_RANK = { operational: 0, maintenance: 1, minor: 2, major: 3 };
+const SEVERITY_RANK = { operational: 0, none: 0, maintenance: 1, minor: 2, major: 3 };
 const MS_PER_MIN = 60_000;
 
 function pad2(n) { return String(n).padStart(2, "0"); }
