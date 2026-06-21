@@ -36,7 +36,9 @@ export function parseDowntimeCsv(text) {
   for (let i = 1; i < lines.length; i++) {
     const cols = parseCsvLine(lines[i]);
     const impact = cols[iImp];
-    if (impact === "none") continue;
+    // Align with mrshu/github-statuses: "none" counts as downtime (not skipped)
+    // Only skip "maintenance" if needed (mrshu uses countsAsDowntime = impact !== 'maintenance')
+    if (impact === "maintenance") continue;
     out.push({
       incidentId: cols[iId],
       startUtc: new Date(cols[iStart]),

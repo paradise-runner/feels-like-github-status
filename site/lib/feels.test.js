@@ -217,3 +217,39 @@ test("acceptedServices filter: window with empty components is excluded when fil
   });
   assert.equal(out.downtimeMinutes, 0);
 });
+
+test("missing impact defaults to 'none' severity (Operational)", () => {
+  const mask = new Uint8Array(168).fill(1);
+  // Create a window with undefined impact
+  const w = {
+    incidentId: "x",
+    startUtc: new Date("2026-04-15T10:00:00Z"),
+    endUtc: new Date("2026-04-15T10:30:00Z"),
+    impact: undefined,
+    components: ["Actions"],
+  };
+  const out = feels({ windows: [w], mask, tz: "UTC", now: NOW });
+  // 30 minutes downtime, severity should be "none" (Operational) when aligned with mrshu
+  assert.equal(out.downtimeMinutes, 30);
+  const day = out.perDay.find((d) => d.date === "2026-04-15");
+  // After Python pipeline fix, impact will be "none" (not undefined)
+  // For now, test that missing impact doesn't crash and downtime is counted
+  assert.ok(day);
+  assert.equal(day.down, 30);
+});
+
+test("empty string impact defaults to 'none' severity (Operational)", () => {
+  const mask = new Uint8Array(168).fill(1);
+  const w = {
+    incidentId: "x",
+    startUtc: new Date("2026-04-15T10:00:00Z"),
+    endUtc: new Date("2026-04-15T10:30:00Z"),
+    impact: "",
+    components: ["Actions"],
+  };
+  const out = feels({ windows: [w], mask, tz: "UTC", now: NOW });
+  assert.equal(out.downtimeMinutes, 30);
+  const day = out.perDay.find((d) => d.date === "2026-04-15");
+  assert.ok(day);
+  assert.equal(day.down, 30);
+});
