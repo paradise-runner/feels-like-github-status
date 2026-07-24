@@ -787,3 +787,5 @@ incident_id,downtime_start,downtime_end,duration_minutes,source,title,impact
 30932681,2026-07-19T23:34:00Z,2026-07-20T04:44:00Z,310,updates,Incident with GitHub Actions,critical
 30939082,2026-07-20T16:03:00Z,2026-07-20T18:37:00Z,154,updates,Disruption with GPT 5.3 Codex,minor
 30946308,2026-07-21T10:31:00Z,2026-07-21T11:57:00Z,86,updates,Some SSH connections using deploy keys are failing,critical
+30965532,2026-07-22T20:43:00Z,2026-07-22T22:09:00Z,86,updates,Disruption with actions hosted runners,minor
+30970268,2026-07-23T07:53:00Z,2026-07-23T08:25:00Z,32,updates,Latency issues across a number of services,major
