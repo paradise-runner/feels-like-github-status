@@ -804,3 +804,5 @@ incident_id,downtime_start,downtime_end,duration_minutes,source,title,impact
 31064249,2026-08-01T18:03:00Z,2026-08-01T18:44:00Z,41,updates,Incident with Copilot AI Model Providers,minor
 31077734,2026-08-03T09:53:00Z,2026-08-03T11:25:00Z,92,updates,Incident with Copilot,minor
 31096975,2026-08-05T11:38:00Z,2026-08-05T13:00:00Z,82,updates,Some Copilot Cloud Agent jobs not starting,minor
+31107586,2026-08-06T15:03:00Z,2026-08-06T16:22:00Z,79,updates,Incident with Pages - Deployment Lag,minor
+31107739,2026-08-06T15:22:00Z,2026-08-07T02:04:00Z,642,updates,Incident with Actions,critical
