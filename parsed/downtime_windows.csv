@@ -811,3 +811,6 @@ incident_id,downtime_start,downtime_end,duration_minutes,source,title,impact
 31147598,2026-08-11T14:00:00Z,2026-08-11T16:00:00Z,120,postmortem,Incident with GraphQL API Requests,minor
 31157038,2026-08-12T16:16:00Z,2026-08-12T16:41:00Z,25,updates,Incident with Pull Requests and Issues,minor
 31158949,2026-08-12T21:39:00Z,2026-08-12T22:56:00Z,77,updates,Disruption with Login and Release Asset downloads,major
+31164972,2026-08-13T14:45:00Z,2026-08-13T15:36:00Z,51,updates,Incident with Webhooks,minor
+31164952,2026-08-13T14:43:00Z,2026-08-13T15:47:00Z,64,updates,Errors with the Fable 5 Model in Copilot,minor
+31165650,2026-08-13T16:21:00Z,2026-08-13T18:27:00Z,126,updates,Disruption with GHEC Team Sync,minor
