@@ -875,3 +875,4 @@ incident_id,downtime_start,downtime_end,duration_minutes,source,title,impact
 31844934,2026-11-04T17:40:00Z,2026-11-04T18:16:00Z,36,updates,Incident with Actions,major
 31854660,2026-11-05T16:50:00Z,2026-11-05T17:42:00Z,52,updates,Incident with Actions,minor
 31857373,2026-11-05T23:36:00Z,2026-11-06T00:20:00Z,44,updates,Degraded performance for multiple GitHub services,minor
+31874571,2026-11-08T10:36:00Z,2026-11-08T12:32:00Z,116,updates,Increase in timeouts for some unauthenticated users,minor
