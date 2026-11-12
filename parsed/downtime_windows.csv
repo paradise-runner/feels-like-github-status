@@ -880,3 +880,4 @@ incident_id,downtime_start,downtime_end,duration_minutes,source,title,impact
 31880516,2026-11-09T10:00:00Z,2026-11-09T11:50:00Z,110,updates,Incident with Webhooks and Actions,major
 31884249,2026-11-09T18:12:00Z,2026-11-09T18:59:00Z,47,updates,Incident with Actions and Checks API,critical
 31885980,2026-11-09T23:16:00Z,2026-11-10T00:05:00Z,49,updates,Degraded availability for GPT-5.3 Codex and GPT-5.6 models in Copilot,major
+31892604,2026-11-10T16:10:00Z,2026-11-10T17:55:00Z,105,updates,Incident with Git Operations and Pull Requests,critical
